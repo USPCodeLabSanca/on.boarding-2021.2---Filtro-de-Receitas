@@ -78,10 +78,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'onboarding',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb+srv://codeLabAdmin:6MKUAqp1x0fFApHM@codelab.c6hb4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-        }  
     }
 }
 
