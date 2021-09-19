@@ -1,0 +1,1 @@
+worker: python receitas/manage.py runserver
