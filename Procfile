@@ -1,1 +1,1 @@
-worker: python receitas/manage.py runserver
+web: gunicorn receitas.wsgi
