@@ -1,4 +1,3 @@
-from django.db.models.fields import TextField
 from djongo import models
 
 class Recipe(models.Model):

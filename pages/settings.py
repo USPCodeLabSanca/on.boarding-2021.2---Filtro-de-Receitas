@@ -82,9 +82,9 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'onboarding',
         'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': os.environ.get('MONGO_CLIENT')
-            } 
+        'CLIENT': {
+            'host': os.environ.get('MONGO_CLIENT')
+        } 
     }
 }
 
