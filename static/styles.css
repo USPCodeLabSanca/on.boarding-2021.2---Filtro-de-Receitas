@@ -56,6 +56,9 @@ header{
     cursor: pointer;
     user-select: none;
 }
+.cardReceita img{
+    width: 80%;
+}
 img{
 
     box-shadow: 5px 6px 6px #827e7ebd;
