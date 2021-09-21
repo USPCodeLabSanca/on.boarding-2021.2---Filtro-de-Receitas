@@ -4,12 +4,12 @@
     {% load static %}
     {% include 'nav.html' %}    
     <section class="receita">
-        <h2>{{ title }}</h2>    
-        <img src="{{ photo_url}}" alt="pudim">
+        <h2>{{ recipe.title }}</h2>    
+        <img src="{{ recipe.photo_url}}" alt="pudim">
         <div class="box-ingrediente">
             <h4>Ingredients</h4>
             <ul>
-                {% for i in ingredients %}
+                {% for i in recipe.ingredients %}
                 <li>{{i}}</li>
                 {% endfor %}   
             </ul>
@@ -18,7 +18,7 @@
         <div class="box-preparo">
             <h4>Instructions</h4>
              <ul>
-                {% for i in instructions %}
+                {% for i in recipe.instructions %}
                 <li>{{i}}</li>
                 {% endfor %}   
             </ul>

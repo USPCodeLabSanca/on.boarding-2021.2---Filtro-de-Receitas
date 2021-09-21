@@ -4,42 +4,18 @@
     {% load static %}
     {% include 'nav.html' %}
     <section class="resultados">
+        {% for recipe in recipe_list %}
         <div class="cardReceita">
-            <img src="{% static 'rsc/exemplo.jpg' %}" alt="pudim" title="pudim">
-            <p>Puudimm</p>
-        </div>
-        <div class="cardReceita">
-            <img src="{% static 'rsc/exemplo.jpg' %}" alt="pudim" title="pudim">
-            <p>Puudimm</p>
-        </div>
-        <div class="cardReceita">
-            <img src="{% static 'rsc/exemplo.jpg' %}" alt="pudim" title="pudim">
-            <p>Puudimm</p>
-        </div>
-        <div class="cardReceita">
-            <img src="{% static 'rsc/exemplo.jpg' %}" alt="pudim" title="pudim">
-            <p>Puudimm</p>
-        </div>
-        <div class="cardReceita">
-            <img src="{% static 'rsc/exemplo.jpg' %}" alt="pudim" title="pudim">
-            <p>Puudimm</p>
-        </div>
-        <div class="cardReceita">
-            <img src="{% static 'rsc/exemplo.jpg' %}" alt="pudim" title="pudim">
-            <p>Puudimm</p>
-        </div>
-
+            <img src="{{recipe.photo_url}}" alt="" title="{{recipe.title}}">
+            <p>{{recipe.title}}</p>
+        </div>        
+        {% endfor %}
     </section>
     <div class="paginas">
         <ul>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">6</a></li>
-            <li><a href="#">7</a></li>
-            <li>Paginas</li>
+            {% for index in page_indexes %}
+            <li><a href="{% url 'pages.views.page_view' page_num=index %}">{{index}}</a></li>
+            {% endfor %}
         </ul>
     </div>
 {% endblock content %}

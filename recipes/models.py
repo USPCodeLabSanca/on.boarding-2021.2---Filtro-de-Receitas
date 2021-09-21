@@ -1,7 +1,6 @@
 from django.db.models.fields import TextField
 from djongo import models
 
-# Create your models here.
 class Recipe(models.Model):
     _id = models.ObjectIdField()
     author = models.TextField()

@@ -1,30 +1,24 @@
+import recipes
 from django.shortcuts import render
 from recipes.models import Recipe
 
-def index_view(request):
-    return render(request, 'index.html', {})
+ITEMS_PER_PAGE = 6
 
-def recipe_view(request):
-    recipe = Recipe.objects.all()[:1][0]
-    
-    context = {
-        "_id" : recipe._id,
-        "author" : recipe.author,
-        "cook_time_minutes" : recipe.cook_time_minutes,
-        "description" : recipe.description,
-        "error" : recipe.error,
-        "footnotes" : recipe.footnotes,
-        "ingredients" : recipe.ingredients,
-        "instructions" : recipe.instructions,
-        "photo_url" : recipe.photo_url,
-        "prep_time_minutes" : recipe.prep_time_minutes,
-        "rating_stars" : recipe.rating_stars,
-        "review_count" : recipe.review_count,
-        "time_scraped" : recipe.time_scraped,
-        "title": recipe.title,
-        "total_time_minutes" : recipe.total_time_minutes,
-        "url": recipe.url,
-        "keywords": recipe.keywords,
+def index_view(request):
+    queryset = Recipe.objects.all()[:ITEMS_PER_PAGE]
+
+    context =  {
+        "recipe_list":queryset
     }
-    
-    return render(request, 'recipe.html', context)
+
+    return render(request, 'index.html', context)
+
+def page_view(request, page_num):
+    queryset = Recipe.objects.all()[(page_num * ITEMS_PER_PAGE):((page_num + 1)*ITEMS_PER_PAGE)]
+
+    context =  {
+        "recipe_list":queryset,
+        "page_indexes": [x for x in range(page_num, page_num + 4)]
+    }
+
+    return render(request, 'index.html', context)
