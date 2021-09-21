@@ -6,15 +6,18 @@
     <section class="resultados">
         {% for recipe in recipe_list %}
         <div class="cardReceita">
-            <img src="{{recipe.photo_url}}" alt="" title="{{recipe.title}}">
+            {% load tagger %}
+            <a href="{% url 'recipe'  id=recipe|private:'_id'%}">
+                <img src="{{recipe.photo_url}}" alt="" title="{{recipe.title}}"> 
+            </a>
             <p>{{recipe.title}}</p>
-        </div>        
-        {% endfor %}
+        </div>
+        {% endfor %}        
     </section>
     <div class="paginas">
         <ul>
             {% for index in page_indexes %}
-            <li><a href="{% url 'pages.views.page_view' page_num=index %}">{{index}}</a></li>
+            <li><a href="{% url 'page' page_num=index %}">{{index}}</a></li>
             {% endfor %}
         </ul>
     </div>
