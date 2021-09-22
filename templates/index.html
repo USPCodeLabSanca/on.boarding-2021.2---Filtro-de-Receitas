@@ -3,22 +3,24 @@
 {% block content %}
     {% load static %}
     {% include 'nav.html' %}
-    <section class="resultados">
-        {% for recipe in recipe_list %}
-        <div class="cardReceita">
-            {% load tagger %}
-            <a href="{% url 'recipe'  id=recipe|private:'_id'%}">
-                <img src="{{recipe.photo_url}}" alt="" title="{{recipe.title}}"> 
-            </a>
-            <p>{{recipe.title}}</p>
+    <div class="container">
+        <section class="resultados">
+            {% for recipe in recipe_list %}
+            <div class="cardReceita">
+                {% load tagger %}
+                <a href="{% url 'recipe'  id=recipe|private:'_id'%}">
+                    <img src="{{recipe.photo_url}}" alt="" title="{{recipe.title}}"> 
+                </a>
+                <p>{{recipe.title}}</p>
+            </div>
+            {% endfor %}        
+        </section>
+        <div class="paginas">
+            <ul>
+                {% for index in page_indexes %}
+                <li><a href="{% url 'page' page_num=index %}">{{index}}</a></li>
+                {% endfor %}
+            </ul>
         </div>
-        {% endfor %}        
-    </section>
-    <div class="paginas">
-        <ul>
-            {% for index in page_indexes %}
-            <li><a href="{% url 'page' page_num=index %}">{{index}}</a></li>
-            {% endfor %}
-        </ul>
     </div>
 {% endblock content %}

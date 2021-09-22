@@ -1,12 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,300&display=swap');
 *{margin:0;padding:0;font-family: 'Poppins',sans-serif;box-sizing: border-box;}
-html{font-size: 14px; margin: 0; padding: 0;background-color: #fffbca;}
+
+:root {
+    --cream: #fffbca;
+    --middle-yellow: #ffea00;
+    --black: #000814;
+    --max-size: 320px;
+    --font-size: 12px;
+    --title: 16px;
+    --font-middle: 13px;
+}
+
+html{font-size: var(--font-size); margin: 0; padding: 0;background-color: var( --cream)}
 
 input{outline:none}
 
+
+@media (min-width:320px) { 
+    :root{
+        --max-size: 490px;
+    }
+}
+@media (min-width:480px) { 
+    :root{
+        --max-size: 600px;
+    }
+ }
+@media (min-width:600px) { 
+    :root{
+        --max-size: 801px;
+    }
+}
+@media (min-width:801px) { 
+    :root{
+        --font-size: 14px;
+        --font-middle: 16px;
+        --title: 24px;
+        --max-size: 1025px;
+    }
+ }
+@media (min-width:1025px) { 
+    :root{
+        --max-size: 1281px;
+    }
+}
+@media (min-width:1281px) {
+    :root{
+    --max-size: 1400px;
+    }
+ }
+
 header{    
     height: 14vh;
-    background-color: #ffea00;
+    background-color: var(--middle-yellow);
+}
+.title{
+    font-size: var(--title);
+    font-weight: bold;
+    text-align: center;
 }
 
 .barraPesquisa{
@@ -14,45 +65,54 @@ header{
     justify-content: center;
     align-items: center;
     height: 100%;
+    flex-direction: row;
 }
 
 .barraPesquisa input[type=text]{
     width: 70%;
-    border-radius: 999px;
-    border: solid 1px #565454b0;
+    border-radius: 72px 0px 0px 72px;
+    border: solid 1px var(--black);
+    border-right: none;
     height: 3.4rem;
-    font-size: 1.7rem;
-    padding: 10px 40px;
+    font-size: var(--title);
+    padding: 10px;
     text-align: center;
+    box-shadow: 0;
 }
 
 .barraPesquisa img{
-    position: absolute;
-    right: 17%;
-    height: 2.5rem;
+    background-color: #fff;
+    height: 3.4rem;
+    border: solid 1px var(--black);
+    border-radius: 0px 72px 72px 0px;
     box-shadow: none;
+    border-left: none;
     margin-bottom: 0;
     cursor: pointer;
 }
 
+.container{
+    display: grid;
+    grid-template-rows: 1fr 0.15fr;
+    max-width: var(--max-size);
+
+}
 
 .resultados{
-    display: flex;
-    justify-content: start;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     margin: 0 13vw;
-    flex-wrap: wrap;
-    height: 75vh;
+    height: auto;
 }
 
 .cardReceita{
-    width: 33%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    margin: 4vh 0px;
-    font-size: 1.8rem;
+    font-size: var(--font-middle);
+    margin: 4vh 5px;
     cursor: pointer;
     user-select: none;
 }
@@ -60,7 +120,6 @@ header{
     width: 80%;
 }
 img{
-
     box-shadow: 5px 6px 6px #827e7ebd;
     margin-bottom: 18px;
     -webkit-user-drag: none;
@@ -69,9 +128,8 @@ img{
     -o-user-drag: none;
 }
 .paginas{
-    display: flex;
-    margin: 0 30vh;
-    justify-content: end;
+    text-align: end;
+    margin: 10px 15%;
     user-select: none;
 }
 
@@ -82,7 +140,7 @@ img{
 }
 .paginas ul li a{
     text-decoration: none;
-    color: #000;
+    color: var(--black);
 }
 .paginas ul li a:hover{
     color: #2a2af8;
@@ -119,7 +177,7 @@ img{
 
 
 footer{
-    background-color: #ffc300;
+    background-color: var(--middle-yellow);
     position: fixed;
     width: 100%;
     bottom: 0;
