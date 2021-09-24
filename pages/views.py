@@ -32,7 +32,7 @@ def page_view(request, page_num):
 def search_page_view(request, page_num, ingredients):
     ingredients_list = ingredients.split()
     queryset = []
-
+    
     # not sure about this, my friends !!!
     queryset += Recipe.objects.filter(reduce(or_, [Q(keywords__contains=x) for x in ingredients_list]))
 
