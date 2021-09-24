@@ -217,8 +217,7 @@ img{
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    margin: 0 13vw;    
-    height: 75vh;
+    margin: 10px 13vw 10vw 13vw;    
 }
 .receita h2{
     font-size: 3rem;
