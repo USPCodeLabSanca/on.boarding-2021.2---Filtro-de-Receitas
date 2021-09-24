@@ -34,9 +34,9 @@ def search_page_view(request, page_num, ingredients):
     if len(ingredients) == 0:
         return page_view(request, page_num)
 
-    ingredients_list = ingredients.split()
+    ingredients_list = ingredients.split('+')
 
-    queryset = Recipe.objects.filter(reduce(or_, [Q(keywords__contains=x) for x in ingredients_list]))\
+    queryset = Recipe.objects.filter(reduce(and_, [Q(keywords__contains=x) for x in ingredients_list]))\
              .order_by('-rating_stars')
 
     queryset = queryset[(page_num * ITEMS_PER_PAGE):((page_num + 1)*ITEMS_PER_PAGE)]
