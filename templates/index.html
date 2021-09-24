@@ -4,6 +4,21 @@
     {% load static %}
     {% include 'nav.html' %}
     <div class="container">
+        <div class="subContainer">
+        <div class="filter">
+            <span class="title">Filtrar por</span>
+            <div class="filterBlock">
+                <span>Tempo</span>
+                <div class="range">
+                    <span id="minRange"></span>
+                    <input type="range" min="36" max="46" value="42"
+                        step="2" id="timeRange">
+                    <span id="maxRange"></span>
+                    
+                </div>
+            </div>
+            <button>Filtrar</button>
+        </div> 
         <section class="resultados">
             {% for recipe in recipe_list %}
             <div class="cardReceita">
@@ -15,6 +30,7 @@
             </div>
             {% endfor %}        
         </section>
+        </div>
         <div class="paginas">
             <ul>
                 {% for index in page_indexes %}
@@ -23,4 +39,21 @@
             </ul>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+
+        $('input[type=range]').on('input', function(e){
+        var min = e.target.min,
+            max = e.target.max,
+            val = e.target.value;
+        $('#minRange').text(min);
+        $('#maxRange').text(val);
+
+        $(e.target).css({
+            'backgroundSize': (val - min) * 100 / (max - min) + '% 100%'
+        });
+        }).trigger('input');
+    </script>
 {% endblock content %}
+
