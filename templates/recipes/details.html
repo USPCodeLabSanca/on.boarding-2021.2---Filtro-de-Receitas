@@ -3,9 +3,46 @@
 {% block content %}
     {% load static %}
     {% include 'nav.html' %}    
+
+
     <section class="receita">
         <span class="title">{{ recipe.title }}</span>    
+        
+        <div class="author">
+            <h4> by {{recipe.author}} </h4>
+        </div>
+        
         <img src="{{ recipe.photo_url}}" alt="pudim">
+        {% load tagger %}
+
+        <div class="rating-stars">
+            <li>
+            {% with rating=recipe.rating_stars|floatformat:0 %}
+            {% for i in "12345" %}
+                {% update_variable rating|add:"-1" as rating %}
+                <ul>
+                {% if rating >= 0 %}
+                    <img src= "{% static 'rsc/full_star.png' %}"  alt="rating_stars"/>
+                {% else %}
+                    <img src= "{% static 'rsc/empty_star.png' %}" alt="rating_stars"/>
+                {% endif %}
+                </ul>
+            {% endfor %}
+            {% endwith %}
+            </li>     
+        </div>
+
+        <div class="recipe-time"> 
+            <h4> Cooking Time </h4>
+            <p> 
+                {% if recipe.total_time_minutes == 0 %} 
+                    -- min
+                {% else %}
+                    {{ recipe.prep_time_minutes }} min
+                {% endif %}
+            </p>
+        </div>
+
         <div class="box-ingrediente">
             <h4>Ingredients</h4>
             <ul>

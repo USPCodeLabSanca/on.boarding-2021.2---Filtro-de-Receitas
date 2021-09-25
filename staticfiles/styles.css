@@ -68,7 +68,7 @@ header{
 }
 .subContainer{
     display: grid;
-    grid-template-rows: 0.15fr 1fr;
+    /*grid-template-rows: 0.15fr 1fr;*/
     /*max-width: var(--max-size);*/
 
 }
@@ -239,6 +239,11 @@ img{
 
 }
 
+.receita.rating_stars ul{
+    margin: 1000px;
+    list-style: none;
+    display:inline;
+}
 
 footer{
     background-color: var(--middle-yellow);
