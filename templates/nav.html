@@ -11,11 +11,17 @@
                   var ingrediente = (this.value);
                 });
                 if(ingrediente.value){
-                    console.log(ingrediente);
+                    localStorage.setItem('ingrediente', JSON.stringify(ingrediente.value));
                     var url = "{% url 'search' ingredients='ingrediente' page_num=1%}";
                     url = url.replace("ingrediente", ingrediente.value);
                     url = url.replace("&amp;&amp;",'&&');
                     location.href = url;
+                }else{
+                    const ingredients = localStorage.getItem("ingrediente");
+                    if (ingredients) {
+                        localStorage.removeItem("ingrediente");
+                    }
+                    location.href = "/";
                 }
             }
         </script>

@@ -16,41 +16,10 @@ html{font-size: var(--font-size); margin: 0; padding: 0;background-color: var( -
 input{outline:none}
 
 
-@media (min-width:320px) { 
-    :root{
-        --max-size: 490px;
-    }
-}
-@media (min-width:480px) { 
-    :root{
-        --max-size: 600px;
-    }
- }
-@media (min-width:600px) { 
-    :root{
-        --max-size: 801px;
-    }
-}
-@media (min-width:801px) { 
-    :root{
-        --font-size: 14px;
-        --font-middle: 16px;
-        --title: 24px;
-        --max-size: 1025px;
-    }
- }
-@media (min-width:1025px) { 
-    :root{
-        --max-size: 1281px;
-    }
-}
-@media (min-width:1281px) {
-    :root{
-    --max-size: 1400px;
-    }
- }
+
 
 header{    
+
     height: 14vh;
     background-color: var(--middle-yellow);
 }
@@ -94,9 +63,105 @@ header{
 .container{
     display: grid;
     grid-template-rows: 1fr 0.15fr;
-    max-width: var(--max-size);
+   /* max-width: var(--max-size);*/
 
 }
+.subContainer{
+    display: grid;
+    grid-template-rows: 0.15fr 1fr;
+    /*max-width: var(--max-size);*/
+
+}
+.filter{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FCF9D4;
+
+}
+
+.range{
+    display: flex;
+    flex-direction: row;
+}
+.range > span{
+    font-weight: bold;
+    margin: 5px;
+}
+
+input[type=range] {
+    margin: auto;
+    outline: none;
+    padding: 0;
+    width: 50%;
+    height: 6px;
+    background-color: #e6e2b5;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #011533), color-stop(100%, var(--black)));
+    background-image: -webkit-linear-gradient(#011533, var(--black));
+    background-image: -moz-linear-gradient(#011533, var(--black));
+    background-image: -o-linear-gradient(#011533, var(--black));
+    background-image: linear-gradient(#020c1c, #000308);
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    -webkit-appearance: none;
+}
+
+input[type=range]::-moz-range-track {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+input[type=range]::-moz-focus-outer {
+    border: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    width: 14px;
+    height: 14px;
+    border: 0;
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+    -webkit-appearance: none;
+}
+
+input[type=range]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border: 0;
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+}
+
+button {
+    text-transform: uppercase;
+    outline: 0;
+    background: var(--middle-yellow);
+    width: 60%;
+    border: 0;
+    padding: 15px;
+    color:  var(--black);
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+button:hover,.form button:active,.form button:focus {
+    background: #a69800;
+  }
 
 .resultados{
     display: grid;
@@ -152,8 +217,7 @@ img{
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    margin: 0 13vw;    
-    height: 75vh;
+    margin: 10px 13vw 10vw 13vw;    
 }
 .receita h2{
     font-size: 3rem;
@@ -188,3 +252,41 @@ footer{
     font-size: 1.7rem;
     user-select: none;
 }
+
+@media (min-width:320px) { 
+    :root{
+        --max-size: 490px;
+    }
+}
+@media (min-width:480px) { 
+    :root{
+        --max-size: 600px;
+    }
+ }
+@media (min-width:600px) { 
+    :root{
+        --max-size: 801px;
+    }
+    .subContainer{
+        grid-template-columns: 0.15fr 1fr;
+
+    }
+}
+@media (min-width:801px) { 
+    :root{
+        --font-size: 14px;
+        --font-middle: 16px;
+        --title: 24px;
+        --max-size: 1025px;
+    }
+ }
+@media (min-width:1025px) { 
+    :root{
+        --max-size: 1281px;
+    }
+}
+@media (min-width:1281px) {
+    :root{
+    --max-size: 1400px;
+    }
+ }

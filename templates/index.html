@@ -11,13 +11,13 @@
                 <span>Tempo</span>
                 <div class="range">
                     <span id="minRange"></span>
-                    <input type="range" min="36" max="46" value="42"
+                    <input type="range" min="0" max="300" value="30"
                         step="2" id="timeRange">
                     <span id="maxRange"></span>
                     
                 </div>
             </div>
-            <button>Filtrar</button>
+            <button onclick="filter()">Filtrar</button>
         </div> 
         <section class="resultados">
             {% for recipe in recipe_list %}
@@ -34,7 +34,7 @@
         <div class="paginas">
             <ul>
                 {% for index in page_indexes %}
-                <li><a href="{% url 'page' page_num=index %}">{{index}}</a></li>
+                <li><a onclick='changePag("{{ index }}")'>{{index}}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -53,6 +53,65 @@
             'backgroundSize': (val - min) * 100 / (max - min) + '% 100%'
         });
         }).trigger('input');
+
+        function changePag(index){
+            const ingrediente = JSON.parse(localStorage.getItem('ingrediente'));
+            const timeLimit = JSON.parse(localStorage.getItem('timeLimit'));
+
+            if(ingrediente && timeLimit){
+                var url = "{% url 'search_with_filter' limit_time=1 ingredients='ingrediente' page_num=0%}";
+                url = url.replace("ingrediente", ingrediente);
+                url = url.replace("1", timeLimit);
+                url = url.replace("0", index);
+
+                url = url.replace("&amp;&amp;",'&&');
+                url = url.replace("&amp;&amp;",'&&');
+
+                location.href = url;
+            }else if(ingrediente){
+                var url = "{% url 'search' ingredients='ingrediente' page_num=1%}";
+                url = url.replace("ingrediente", ingrediente);
+                url = url.replace("1", index);
+                url = url.replace("&amp;&amp;",'&&');
+                location.href = url;
+            }else if(timeLimit){
+                var url = "{% url 'time_filter' limit_time=1 page_num=0%}";
+                url = url.replace("1", timeLimit);
+                url = url.replace("0", index);
+                url = url.replace("&amp;&amp;",'&&');
+                url = url.replace("&amp;&amp;",'&&');
+
+                location.href = url;
+            }
+            else{
+                var url = "{% url 'page' page_num=1%}";
+                url = url.replace("1", index);
+                location.href = url;
+            }
+        }
+
+        function filter(){
+            const ingrediente = JSON.parse(localStorage.getItem('ingrediente'));
+            var timeLimit = $("#timeRange").val();
+            localStorage.setItem('timeLimit', JSON.stringify(timeLimit));
+
+            if(ingrediente){
+                var url = "{% url 'search_with_filter' limit_time=1 ingredients='ingrediente' page_num=0%}";
+                url = url.replace("ingrediente", ingrediente);
+                url = url.replace("1", timeLimit);
+                url = url.replace("&amp;&amp;",'&&');
+                url = url.replace("&amp;&amp;",'&&');
+
+                location.href = url;
+            }else{
+                var url = "{% url 'time_filter' limit_time=1 page_num=0%}";
+                url = url.replace("1", timeLimit);
+                url = url.replace("&amp;&amp;",'&&');
+
+                location.href = url;
+            }
+        }
+
     </script>
 {% endblock content %}
 

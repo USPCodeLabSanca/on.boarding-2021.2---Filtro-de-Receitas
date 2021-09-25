@@ -68,7 +68,7 @@ header{
 }
 .subContainer{
     display: grid;
-    grid-template-rows: 0.15fr 1fr;
+    /*grid-template-rows: 0.15fr 1fr;*/
     /*max-width: var(--max-size);*/
 
 }
