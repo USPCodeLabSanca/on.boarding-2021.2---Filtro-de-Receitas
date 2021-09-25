@@ -1,7 +1,23 @@
 {% load static %}
 <header>
     <div class="barraPesquisa">
-        <input type="text" placeholder="Digite um ingrediente ou uma receita">
-        <img src="{% static 'rsc/lupa.svg' %}" title="IconePesquisar" alt="IconePesquisa"/>
+        <input id="ingrediente" type="text" placeholder="Digite um ingrediente ou uma receita">
+        <img src="{% static 'rsc/lupa.svg' %}" title="IconePesquisar" alt="IconePesquisa"/ onclick="searchIngrediente()">
+        <script>
+            
+            function searchIngrediente(){
+                
+                $("#ingrediente").keyup(function(){
+                  var ingrediente = (this.value);
+                });
+                if(ingrediente.value){
+                    console.log(ingrediente);
+                    var url = "{% url 'search' ingredients='ingrediente' page_num=1%}";
+                    url = url.replace("ingrediente", ingrediente.value);
+                    url = url.replace("&amp;&amp;",'&&');
+                    location.href = url;
+                }
+            }
+        </script>
     </div>
 </header>
