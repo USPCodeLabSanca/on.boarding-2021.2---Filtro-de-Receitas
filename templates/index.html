@@ -59,25 +59,27 @@
             const timeLimit = JSON.parse(localStorage.getItem('timeLimit'));
 
             if(ingrediente && timeLimit){
-                var url = "{% url 'search_with_filter' limit_time=1 ingredients='ingrediente' page_num=0%}";
+                var url = "{% url 'search_with_filter' limit_time=1 ingredients='ingrediente' page_num=999%}";
                 url = url.replace("ingrediente", ingrediente);
+                url = url.replace("999", index);
+
                 url = url.replace("1", timeLimit);
-                url = url.replace("0", index);
 
                 url = url.replace("&amp;&amp;",'&&');
                 url = url.replace("&amp;&amp;",'&&');
 
                 location.href = url;
             }else if(ingrediente){
-                var url = "{% url 'search' ingredients='ingrediente' page_num=1%}";
+                var url = "{% url 'search' ingredients='ingrediente' page_num=999%}";
                 url = url.replace("ingrediente", ingrediente);
-                url = url.replace("1", index);
+                url = url.replace("999", index);
                 url = url.replace("&amp;&amp;",'&&');
                 location.href = url;
             }else if(timeLimit){
-                var url = "{% url 'time_filter' limit_time=1 page_num=0%}";
+                var url = "{% url 'time_filter' limit_time=1 page_num=999%}";
+                url = url.replace("999", index);
+
                 url = url.replace("1", timeLimit);
-                url = url.replace("0", index);
                 url = url.replace("&amp;&amp;",'&&');
                 url = url.replace("&amp;&amp;",'&&');
 

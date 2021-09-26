@@ -172,21 +172,24 @@ button:hover,.form button:active,.form button:focus {
 
 .cardReceita{
     display: flex;
+    box-shadow: 5px 6px 6px #827e7ebd;
     justify-content: center;
-    flex-wrap: wrap;
+    display: block;
     flex-direction: column;
-    align-items: center;
+    align-content: center;
+    text-align: center;
     font-size: var(--font-middle);
     margin: 4vh 5px;
     cursor: pointer;
     user-select: none;
 }
 .cardReceita img{
-    width: 80%;
+    padding: 3%;
+    width: 200px;
+    height: 120px;
 }
+
 img{
-    box-shadow: 5px 6px 6px #827e7ebd;
-    margin-bottom: 18px;
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
@@ -239,21 +242,51 @@ img{
 
 }
 
-.receita.rating_stars ul{
-    margin: 1000px;
+.rating-stars li{
     list-style: none;
-    display:inline;
 }
+
+.rating-stars ul {
+    display:inline-block;
+}
+
+.rating-stars img{
+    box-shadow: none;
+    width: 32px;
+}
+
+.recipe-time {
+    padding: 1%;
+}
+
+.recipe-time p{
+    text-align: center;
+}
+
+.box-ingrediente {
+    padding: 1%;
+
+}
+
+.box-preparo {
+    padding: 1%;
+}
+
+.icons-ref {
+    font-size: 10px;
+    font-style: italic;
+}
+
+
 
 footer{
     background-color: var(--middle-yellow);
     position: fixed;
     width: 100%;
     bottom: 0;
-    height: 6vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: auto;
+    display: block;
+    text-align: center;
     font-size: 1.7rem;
     user-select: none;
 }

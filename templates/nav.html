@@ -6,7 +6,11 @@
         <script>
             
             function searchIngrediente(){
-                
+                const timeLimit = JSON.parse(localStorage.getItem('timeLimit'));
+                if (timeLimit) {
+                        localStorage.removeItem("timeLimit");
+                }
+
                 $("#ingrediente").keyup(function(){
                   var ingrediente = (this.value);
                 });
